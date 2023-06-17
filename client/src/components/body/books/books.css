@@ -1,0 +1,11 @@
+.corousel-class {
+    width: 100%;
+    height: 80vh;
+}
+
+
+@media(max-width: 600px) {
+    .corousel-class {
+        height: 30vh;
+    }
+}
