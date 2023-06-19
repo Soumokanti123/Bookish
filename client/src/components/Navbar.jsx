@@ -18,6 +18,17 @@ import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+  const [modalAbout, setModalAbout] = useState(false);
+  const [modalContact, setModalContact] = useState(false);
+
+  const modalAboutHandler = () => {
+    setModalAbout((prevState) => !prevState);
+  }
+
+  const modalContactHandler = () => {
+    setModalContact((prevState) => !prevState)
+  }
+
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
   const menuOptions = [
@@ -46,7 +57,7 @@ export const Navbar = () => {
       <div className="navbar-links-container">
         <a href="/">Home</a>
         <a href="">About</a>
-        <a href="">Books</a>
+        <a href="/books">Books</a>
         <a href="">Contact</a>
         <a href="">
           <BsCart2 className="navbar-cart-icon" />

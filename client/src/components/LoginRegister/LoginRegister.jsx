@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./LoginRegister.css";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { ForgetPassword } from "../Modal/forgetPasswordModal/ForgetPassword";
 
 // import image1 from "./img/img1.svg";
 // import image2 from "./img/img2.svg";
@@ -10,6 +11,13 @@ import { useNavigate } from "react-router-dom";
 export const LoginRegister = () => {
   const navigate = useNavigate();
   const [isSignIn, setIsSignIn] = useState(false);
+  const [modalForgetPassword, setModalForgetPassword] = useState(false);
+
+
+  const modalHandlerForgetPassword = () => {
+    setModalForgetPassword((prevState) => !prevState);
+    console.log(modalForgetPassword);
+  };
 
   const [user, setUser] = useState({
     name: "",
@@ -144,6 +152,9 @@ export const LoginRegister = () => {
               />
             </div>
             <input type="submit" value="Login" className="btn solid" />
+            <p onClick={() => modalHandlerForgetPassword()}>
+              Forget Password ?
+            </p>
           </form>
           <form
             action="#"
@@ -243,6 +254,11 @@ export const LoginRegister = () => {
           {/* <img src={image2} className="image" alt="" /> */}
         </div>
       </div>
+      {modalForgetPassword && (
+        <ForgetPassword
+          modalHandlerForgetPassword={modalHandlerForgetPassword}
+        />
+      )}
     </div>
   );
 };
